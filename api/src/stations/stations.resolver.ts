@@ -13,7 +13,7 @@ export class StationsResolver {
   }
 
   @Query(() => Station)
-  station(@Args('id') id: number): Station {)
+  station(@Args('id') id: number): Station {
     const station = this.stationsService.findOneById(id);
     if (!station) {
       throw new NotFoundException(id);

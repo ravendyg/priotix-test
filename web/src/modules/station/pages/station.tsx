@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_STATION } from '../queries';
 import { StationItem } from '../types/stationItem';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Loader } from '../../../shared/components/loader';
 import { Error } from '../../../shared/components/error';
 import { Card, Container, Row } from 'react-bootstrap';
