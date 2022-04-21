@@ -1,6 +1,6 @@
-import { titleSort } from "./consts";
-import { Sort } from "./types";
+import { titleSort } from './consts';
+import { Sort } from './types';
 
 export function getSortByTitle(title: string): Sort {
-  return (titleSort as any)[title] || ''
+  return (titleSort as any)[title] || '';
 }

@@ -3,4 +3,4 @@ export const titleSort = {
   Margin: 'margin',
   Volume: 'volume',
   Profit: 'profit',
-}
+};

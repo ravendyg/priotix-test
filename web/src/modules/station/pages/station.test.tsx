@@ -4,12 +4,12 @@ import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import {
   MemoryRouter,
   Route,
-  Routes
-} from "react-router-dom";
+  Routes,
+} from 'react-router-dom';
+import { wait } from '@testing-library/user-event/dist/utils';
 import { StationPage } from './station';
 import { StationItem } from '../types/stationItem';
 import { GET_STATION } from '../queries';
-import { wait } from '@testing-library/user-event/dist/utils';
 
 const mocks: MockedResponse<{ station: StationItem }>[] = [
   {
@@ -30,14 +30,14 @@ const mocks: MockedResponse<{ station: StationItem }>[] = [
         },
       },
     },
-  }
+  },
 ];
 
 test('displays loader while fetching data', () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <StationPage />
-    </MockedProvider>
+    </MockedProvider>,
   );
   const linkElement = screen.getByTestId('spinner');
   expect(linkElement).toBeInTheDocument();
@@ -48,13 +48,13 @@ test('displays station information', async () => {
     <MockedProvider mocks={mocks} addTypename={false}>
       <MemoryRouter initialEntries={['/station/1']}>
         <Routes>
-          <Route path='/station/:id' element={<StationPage />} />
+          <Route path="/station/:id" element={<StationPage />} />
         </Routes>
       </MemoryRouter>
-    </MockedProvider>
+    </MockedProvider>,
   );
 
-  await waitFor(() => new Promise(resolve => setTimeout(resolve, 50)));
+  await waitFor(() => new Promise((resolve) => setTimeout(resolve, 50)));
 
   const linkElement = screen.getByText(/Margin: 1/);
   expect(linkElement).toBeInTheDocument();
@@ -65,13 +65,13 @@ test('displays error message when station is not found', async () => {
     <MockedProvider mocks={mocks} addTypename={false}>
       <MemoryRouter initialEntries={['/station/10']}>
         <Routes>
-          <Route path='/station/:id' element={<StationPage />} />
+          <Route path="/station/:id" element={<StationPage />} />
         </Routes>
       </MemoryRouter>
-    </MockedProvider>
+    </MockedProvider>,
   );
 
-  await waitFor(() => new Promise(resolve => setTimeout(resolve, 50)));
+  await waitFor(() => new Promise((resolve) => setTimeout(resolve, 50)));
 
   const linkElement = screen.getByText(/No more mocked responses for the query/);
   expect(linkElement).toBeInTheDocument();

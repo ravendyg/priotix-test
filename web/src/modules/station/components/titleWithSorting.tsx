@@ -1,6 +1,6 @@
-import React from 'react'
-import { Order, Sort } from '../types'
-import { getSortByTitle } from '../utils'
+import React from 'react';
+import { Order, Sort } from '../types';
+import { getSortByTitle } from '../utils';
 
 type TitleWithSortingProps = {
   title: string
@@ -14,17 +14,21 @@ export function TitleWithSorting({
   order,
   onClick,
 }: TitleWithSortingProps) {
-  let text = title
-  const columnSort = getSortByTitle(title)
+  let text = title;
+  const columnSort = getSortByTitle(title);
   if (sort && columnSort === sort) {
     if (order === 1) {
-      text += ' ▼'
+      text += ' ▼';
     } else if (order === -1) {
-      text += ' ▲'
+      text += ' ▲';
     }
   }
-  return <th
-    onClick={() => onClick(title)}
-    className='clickable'
-  >{text}</th>
+  return (
+    <th
+      onClick={() => onClick(title)}
+      className="clickable"
+    >
+      {text}
+    </th>
+  );
 }

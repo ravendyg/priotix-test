@@ -1,4 +1,4 @@
-import { StationMetrics } from "./stationMetrics"
+import { StationMetrics } from './stationMetrics';
 
 export type StationItem = {
   id: number
